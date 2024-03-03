@@ -1,0 +1,104 @@
+#root {
+  min-height: 100dvh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+  padding: 1rem;
+
+  .board {
+    display: grid;
+    width: 100%;
+    max-width: 30rem;
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+
+    .square {
+      aspect-ratio: 1;
+      /* border: 1px solid; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+    }
+
+    &::after {
+      content: "";
+      background-image: url(/tablero.avif);
+      background-size: cover;
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+  }
+
+  .players {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .player {
+      font-size: 3rem;
+      padding: 1rem;
+      border: 1px solid;
+      border-radius: 0.5rem;
+
+      &.current {
+        background-color: #00acc1;
+      }
+    }
+  }
+
+  .reset-btn {
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 3rem;
+    padding: 1rem;
+    border: 2px solid;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    transition: scale 0.3s;
+
+    &:hover {
+      scale: 1.05;
+    }
+  }
+
+  .result {
+    position: absolute;
+    inset: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-inline: 1rem;
+    backdrop-filter: blur(10px);
+
+    > div {
+      text-align: center;
+      border: 0.5rem solid;
+      padding: 1rem;
+      border-radius: 1rem;
+      width: 100%;
+      max-width: 20rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 1rem;
+      font-size: 2rem;
+
+      > p {
+        display: flex;
+        flex-direction: column;
+
+        > span {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+}
