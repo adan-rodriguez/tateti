@@ -9,7 +9,7 @@ export function useCurrentPlayer() {
     return currentPlayerStorage ?? INITIAL_PLAYER;
   });
 
-  const updateCurrentPlayer = () => {
+  const toogleCurrentPlayer = () => {
     const newCurrentPlayer =
       currentPlayer === PLAYERS.X ? PLAYERS.O : PLAYERS.X;
     setCurrentPlayer(newCurrentPlayer);
@@ -21,5 +21,5 @@ export function useCurrentPlayer() {
     localStorage.setItem("currentPlayer", currentPlayer);
   }, [currentPlayer]);
 
-  return { currentPlayer, updateCurrentPlayer, resetCurrentPlayer };
+  return { currentPlayer, toogleCurrentPlayer, resetCurrentPlayer };
 }

@@ -5,7 +5,7 @@ import { PLAYERS } from "./constants";
 import { useResult } from "./hooks/useResult";
 
 export default function App() {
-  const { currentPlayer, updateCurrentPlayer, resetCurrentPlayer } =
+  const { currentPlayer, toogleCurrentPlayer, resetCurrentPlayer } =
     useCurrentPlayer();
   const { board, updateBoard, resetBoard } = useBoard({ currentPlayer });
   const { result } = useResult({ board });
@@ -13,7 +13,7 @@ export default function App() {
   const handleClick = ({ position }) => {
     if (board[position] || result !== null) return;
     updateBoard({ position });
-    updateCurrentPlayer();
+    toogleCurrentPlayer();
   };
 
   const reset = () => {
