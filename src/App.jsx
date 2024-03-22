@@ -41,37 +41,39 @@ export default function App() {
 
   return (
     <main>
-      <section className="board">
-        {board.map((square, index) => (
-          <article
-            onClick={() => handleClick({ position: index })}
-            className="square"
-            key={index}
-            data-position={index}
-          >
-            {square}
-          </article>
-        ))}
-      </section>
+      <section className="game">
+        <section className="board">
+          {board.map((square, index) => (
+            <article
+              onClick={() => handleClick({ position: index })}
+              className="square"
+              key={index}
+              data-position={index}
+            >
+              {square}
+            </article>
+          ))}
+        </section>
 
-      <section className="players">
-        <article
-          className={`player ${currentPlayer === PLAYERS.X ? "current" : ""}`}
-        >
-          {PLAYERS.X}
-        </article>
-        <button
-          onClick={toogleCurrentPlayer}
-          disabled={checkStartGame}
-          className={`btn ${checkStartGame ? "disabled" : ""}`}
-        >
-          <SwitchHorizontal />
-        </button>
-        <article
-          className={`player ${currentPlayer === PLAYERS.O ? "current" : ""}`}
-        >
-          {PLAYERS.O}
-        </article>
+        <section className="players">
+          <article
+            className={`player ${currentPlayer === PLAYERS.X ? "current" : ""}`}
+          >
+            {PLAYERS.X}
+          </article>
+          <button
+            onClick={toogleCurrentPlayer}
+            disabled={checkStartGame}
+            className={`btn ${checkStartGame ? "disabled" : ""}`}
+          >
+            <SwitchHorizontal />
+          </button>
+          <article
+            className={`player ${currentPlayer === PLAYERS.O ? "current" : ""}`}
+          >
+            {PLAYERS.O}
+          </article>
+        </section>
       </section>
 
       <section className="buttons">
