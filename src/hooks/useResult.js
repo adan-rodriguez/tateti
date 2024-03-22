@@ -1,13 +1,28 @@
 import { useEffect, useState } from "react";
-import { WINNING_COMBINATIONS } from "../constants";
+import { PLAYERS, WINNING_COMBINATIONS } from "../constants";
 
 const checkWinner = ({ board }) => {
   for (const combo of WINNING_COMBINATIONS) {
     if (
+      board[combo[0]] !== null &&
       board[combo[0]] === board[combo[1]] &&
       board[combo[0]] === board[combo[2]]
     ) {
-      return board[combo[0]];
+      const winnerPlayer = board[combo[0]];
+      const color = winnerPlayer === PLAYERS.X ? "#9b3232" : "#d0d0d0";
+      document
+        .querySelectorAll(".square")
+        .forEach((square) => (square.style.backgroundColor = "black"));
+      document.querySelector(
+        `.square[data-position="${combo[0]}"]`
+      ).style.backgroundColor = color;
+      document.querySelector(
+        `.square[data-position="${combo[1]}"]`
+      ).style.backgroundColor = color;
+      document.querySelector(
+        `.square[data-position="${combo[2]}"]`
+      ).style.backgroundColor = color;
+      return winnerPlayer;
     }
   }
 };
@@ -31,8 +46,12 @@ export function useResult({ board }) {
       setResult(null);
       return;
     }
+
     const newResult = checkResult({ board });
-    if (newResult !== null) setResult(newResult);
+    if (newResult !== null) {
+      setResult(newResult);
+      document.getElementById("winner-audio")?.play();
+    }
   }, [board]);
 
   return { result };

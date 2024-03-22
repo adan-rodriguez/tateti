@@ -1,0 +1,140 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  /* font-family: "Onest", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal; */
+  min-width: 320px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.96)),
+    url(/bg.avif);
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  transition: scale 0.3s;
+
+  &:hover {
+    scale: 1.05;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+
+    &:hover {
+      scale: 1;
+    }
+  }
+}
+
+.player {
+  font-size: 3rem;
+  padding: 0.5rem;
+  border: 1px solid;
+  border-radius: 0.5rem;
+
+  &.current {
+    background-color: #00acc1;
+  }
+}
+
+main {
+  padding: 1rem;
+  max-width: 64rem;
+  margin-inline: auto;
+
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    max-width: 32rem;
+    gap: 4px;
+    background-color: white;
+    margin-inline: auto;
+    box-shadow: inset 0px 0px 20px 20px rgb(0 0 0);
+
+    .square {
+      aspect-ratio: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+      background-color: #121212;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: inset 0px 0px 20px 3px rgb(0 0 0);
+
+      &:hover {
+        filter: brightness(1.75);
+      }
+    }
+  }
+
+  .players {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+  }
+
+  .buttons {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+
+  /* .result {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-inline: 1rem;
+    backdrop-filter: blur(10px);
+
+    > div {
+      text-align: center;
+      border: 1px solid;
+      padding: 1rem;
+      width: 100%;
+      max-width: 20rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 1rem;
+      font-size: 2rem;
+
+      > p {
+        display: flex;
+        flex-direction: column;
+
+        > span {
+          font-size: 3rem;
+        }
+      }
+    }
+  } */
+}
